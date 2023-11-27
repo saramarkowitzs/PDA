@@ -1,3 +1,4 @@
+import java.util.Scanner;
 /**
  * Permissible Dating Age program
  *
@@ -6,12 +7,14 @@
  */
 public class PDA
 {
-
+       Scanner scanner = new Scanner(System.in);
+        private int age;
     /**
      * Constructor for objects of class PDA
      */
     public PDA()
     {
+        scanner = new Scanner(System.in);
         // We don't need to do anything in the constructor for
         // our program.
     }
@@ -20,12 +23,12 @@ public class PDA
      * This is the main event loop for our PDA program
      */
     public void runEventLoop() {
-        scanner = new Scanner(System.in);
-       while (true) {
+  while (true) {
       System.out.println("How old are you?");
       age = scanner.nextInt();
       System.out.println(age);
-    }
+  }
+
     }
 
     /**
@@ -36,4 +39,3 @@ public class PDA
         pda.runEventLoop();
     }
 }
-

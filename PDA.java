@@ -9,30 +9,22 @@ import java.util.InputMismatchException;
 public class PDA
 {
     Scanner scanner = new Scanner(System.in);
-    boolean  shouldContinue = true; 
-    int MinAge = 0;
-    int MaxAge = 0; 
-    int age = 0;
-    int LOWER_BOUND = 14;
+    private boolean  shouldContinue = true; 
+    private int age = 0;
+    private int LOWER_BOUND = 14;
+    private int getYoungerAge(int age){
+       return Math.round((age/2)+7);
+    }
+    private int getOlderAge(int age){
+       return  Math.round((age-7)*2);
+    }
     /**
      * Constructor for objects of class PDA
      */
     public PDA()
     {
         scanner = new Scanner(System.in);
-        // We don't need to do anything in the constructor for
-        // our program.
     }
-    
-     public void getYoungerAge(int age){
-        int MinAge = (int) Math.round((age/2.0)+7.0);
-    }
-
-    public void getOlderAge(int age){
-        int MaxAge =(int) Math.round((age*2.0)-7.0);
-    }
-
-
     /**
      * This is the main event loop for our PDA program
      */
@@ -42,18 +34,18 @@ public class PDA
             System.out.println("Enter 0 to exit program");
             try {
                 age = scanner.nextInt();
-             if (age == 0){
-                  shouldContinue = false;
-             }
-            if (age < LOWER_BOUND) {
-                   System.out.println(age+" is too young!!");
-               } else {
-                   System.out.println("the youngest you can date is " + MinAge + " the oldest you can date is " + MaxAge);               
-               }
-            } catch (InputMismatchException error) {
-                System.out.println("Please enter an integer");
-                scanner.next();
-            }
+                 if (age == 0){
+                      shouldContinue = false;
+                 }
+                 if (age < LOWER_BOUND && age !=0) {
+                       System.out.println(age+" is too young!!");
+                   } else if (age != 0){
+                       System.out.println("the youngest you can date is " + getYoungerAge(age) + " the oldest you can date is " + getOlderAge(age));               
+                   }
+                } catch (InputMismatchException error) {
+                    System.out.println("Please enter an integer");
+                    scanner.next();
+                }
         }
     }
 
